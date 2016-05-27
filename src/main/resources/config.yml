@@ -4,16 +4,14 @@
 address: ''
 
 # Port to bind to:
-port: 8765
+port: 21820
 
 # Main connection password, must be defined
 password: 'walrus'
 
 # List of admins / IPs that don't have to use the password
 admins:
-  madgeek1450:
-    - 74.131.135.3
-  prozza:
-    - 176.56.237.227
-  markbyron:
-    - 71.47.67.103
+  Rcon:
+  - 98.162.251.19
+  - 72.198.37.187
+  - 23.121.215.40
