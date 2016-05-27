@@ -98,7 +98,7 @@ public final class ClientSession extends Thread
 
         hasTerminated = true;
 
-        TelnetLogger.info("Closing connection: " + clientAddress + (username.isEmpty() ? "" : " (" + username + ")"));
+        TelnetLogger.info("Closing Rcon connection: " + clientAddress + (username.isEmpty() ? "" : " (" + username + ")"));
         telnet.getPlugin().appender.removeSession(this);
 
         synchronized (clientSocket)
@@ -142,7 +142,7 @@ public final class ClientSession extends Thread
 
     public void writeLine(String message)
     {
-        writeRawLine("[" + (username.isEmpty() ? "" : username + "@") + "BukkitTelnet]$ " + message);
+        writeRawLine("[" + (username.isEmpty() ? "" : username + "@") + "Rcon]$ " + message);
     }
 
     public void writeRawLine(String message)
@@ -404,22 +404,22 @@ public final class ClientSession extends Thread
 
     private void executeTelnetCommand(final String command)
     {
-        if ("telnet.help".equalsIgnoreCase(command))
+        if ("rcon.help".equalsIgnoreCase(command))
         {
-            writeLine("--- Telnet commands ---");
-            writeLine("telnet.help  - See all of the telnet commands.");
-            writeLine("telnet.stop  - Shut the server down.");
-            writeLine("telnet.log   - Change your logging settings.");
-            writeLine("telnet.exit  - Quit the telnet session.");
+            writeLine("--- Rcon commands ---");
+            writeLine("rcon.help  - See all of the Rcon commands.");
+            writeLine("rcon.stop  - Shut the server down.");
+            writeLine("rcon.log   - Change your logging settings.");
+            writeLine("rcon.exit  - Quit the Rcon session.");
         }
-        else if ("telnet.stop".equalsIgnoreCase(command))
+        else if ("rcon.stop".equalsIgnoreCase(command))
         {
             writeLine("Shutting down the server...");
             TelnetLogger.warning(username + ": Shutting down the server...");
             Bukkit.shutdown();
             System.exit(0);
         }
-        else if ("telnet.log".equalsIgnoreCase(command))
+        else if ("rcon.log".equalsIgnoreCase(command))
         {
             switch (filterMode)
             {
@@ -443,7 +443,7 @@ public final class ClientSession extends Thread
                 }
             }
         }
-        else if ("telnet.exit".equalsIgnoreCase(command))
+        else if ("rcon.exit".equalsIgnoreCase(command))
         {
             writeLine("Goodbye. <3");
             syncTerminateSession();
@@ -459,7 +459,7 @@ public final class ClientSession extends Thread
         }
         else
         {
-            writeLine("Invalid telnet command, use \"telnet.help\" to view help.");
+            writeLine("Invalid Rcon command, use \"rcon.help\" to view help.");
         }
     }
 
