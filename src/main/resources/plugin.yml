@@ -1,4 +1,4 @@
-name: BukkitTelnet
+name: WolfFreedom-Console
 main: me.totalfreedom.bukkittelnet.BukkitTelnet
 version: 4.3
 description: Telnet console access plugin.
